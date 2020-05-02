@@ -2,3 +2,7 @@
 WypożyczalniaPojazdów/WypozyczalniaPojazdowStare.vpp
 WypożyczalniaPojazdów/WypozyczalniaPojazdowStare2.vpp
 WypożyczalniaPojazdów/*.bak*
+WypożyczalniaPojazdów/*.vpp.bak*
+WypożyczalniaPojazdów/*.vpp.lck
+sideThings/*
+pytania.txt
