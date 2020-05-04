@@ -5,4 +5,4 @@ WypożyczalniaPojazdów/*.bak*
 WypożyczalniaPojazdów/*.vpp.bak*
 WypożyczalniaPojazdów/*.vpp.lck
 sideThings/*
-pytania.txt
+*.txt
