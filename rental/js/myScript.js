@@ -30,3 +30,18 @@ function reserve(car){
     option.setAttribute("selected","selected");
     smoothScroll('#reservation');
 }
+
+function calculate(price){
+    var result = document.getElementById('amount');
+    result.innerHTML = '';
+    var days = document.getElementById('days').value;
+    var hours = document.getElementById('hours').value;
+    var cost = (days*24*price) + (hours*price);
+    result.innerHTML = cost;
+    
+}
+
+function calculate_price(price){
+    document.getElementById('days').addEventListener('change',function(){calculate(price)})
+    document.getElementById('hours').addEventListener('change',function(){calculate(price)})
+} 

@@ -68,3 +68,7 @@ header button:hover{
     width: 60px;
     cursor: pointer;
 }
+
+html, body{
+    overflow-x: hidden;
+}

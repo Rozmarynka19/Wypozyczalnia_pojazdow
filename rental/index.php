@@ -7,12 +7,14 @@ require('admin/functions.php');
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+  <link rel="shortcut icon" href="assets/icon.png" type="image/x-icon">
+    
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/795f4f2a8f.js" crossorigin="anonymous"></script>
   <title>VRENT</title>
 </head>
 
@@ -68,10 +70,10 @@ require('admin/functions.php');
     <div class="container-fluid bg-primary p-5">
       <div class="row">
         <div class="col-12">
-          <h1 class="text-center p-5">DOSTĘPNE SAMOCHODY</h1>
+          <h1 class="text-center pt-4 pb-4">DOSTĘPNE SAMOCHODY</h1>
         </div>
       </div>
-      <div class="row">
+      <div class="row d-flex justify-content-center">
 
         
 
@@ -85,7 +87,7 @@ require('admin/functions.php');
             echo '<h5 class="card-title text-center">'.$r['name'].'</h5>';
             echo '<p class="text-center">'.$r['type'].'</p>';
             echo '<p class="text-center font-weight-bold">'.$r['price'].' zł / h</p>';
-            echo '<button class="btn btn-primary col-12" onclick="reserve('.$r['id'].')">REZERWUJ</button>';
+            echo '<button class="btn btn-primary col-12" onclick="reserve('.$r['id'].');calculate_price('.$r['price'].');">REZERWUJ</button>';
             echo'</div>';
             echo'</div>';
             echo'</div>';
@@ -99,13 +101,13 @@ require('admin/functions.php');
   <!--available-->
   <!--unavailable-->
   <section id="unavailable">
-    <div class="container-fluid bg-primary p-5">
+    <div class="container-fluid bg-primary pt-4 pb-4">
       <div class="row">
         <div class="col-12">
-          <h1 class="text-center p-5">OBECNIE ZAREZERWOWANE</h1>
+          <h1 class="text-center pt-4 pb-4">OBECNIE ZAREZERWOWANE</h1>
         </div>
       </div>
-      <div class="row">
+      <div class="row d-flex justify-content-center">
 
        
         <?php
@@ -118,7 +120,7 @@ require('admin/functions.php');
                 echo '<h5 class="card-title text-center">'.$r['name'].'</h5>';
                 echo '<p class="text-center">'.$r['type'].'</p>';
                 echo '<p class="text-center font-weight-bold">'.$r['price'].' zł / h</p>';
-                echo '<button class="btn btn-danger col-12" disabled onclick="reserve('.$r['id'].')">DOSTĘPNY OD '.$r['to_date'].'</button>';
+                echo '<button class="btn btn-danger col-12" disabled onclick="reserve('.$r['id'].')">DOSTĘPNY OD '.substr($r['to_date'],0,-3).'</button>';
                 echo'</div>';
               echo'</div>';
             echo'</div>';
@@ -134,8 +136,11 @@ require('admin/functions.php');
   <!--reservation form-->
   <section id="reservation">
     <div class="container-fluid">
-      <h1 class="text-center p-5 font-weight-bold">ZAREZERWUJ</h1>
+      <h1 class="text-center p-5 m-0 font-weight-bold">ZAREZERWUJ</h1>
       <div class="row">
+        <div class="col-12 text-center text-danger">
+          <h2><span id="amount">0</span> zł</h2>
+        </div>
         <div class="col-12 d-flex justify-content-center p-5 text-white">
           <form action="admin/reserve.php" method="POST">
             <div class="row">
@@ -157,8 +162,8 @@ require('admin/functions.php');
               <input type="tel" class="form-control" name="phone" placeholder="Podaj numer telefonu" Required>
             </div>
             <div class="form-group">
-              <label for="car"Samochód></label>
-              <select name="car" class="form-control" id="car" Required>
+              <label for="car"Samochód>Pojazd</label>
+              <select name="car" class="form-control" id="car" Required >
                 <?php
                   $rows = get_cars('select');
 
@@ -170,13 +175,13 @@ require('admin/functions.php');
               </select>
             </div>
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-6">
                 <div class="form-group">
                   <label for="date">Termin</label>
                   <input type="datetime-local" class="form-control" name="date" id="date"  Required>
                 </div>
               </div>
-              <div class="col-sm-7">
+              <div class="col-sm-6">
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -194,7 +199,9 @@ require('admin/functions.php');
               </div>
             </div>
             <div class="col-12">
+                <div class="row">
                   <input type="submit" value="REZERWUJ" class="btn btn-danger col-12">
+                </div>
             </div>
           </form>
         </div>
@@ -206,11 +213,38 @@ require('admin/functions.php');
 
   <!--reservation form-->
 
-  <footer>
-    <div class="col-12">
-      <h6 class="text-center font-weight-bold p-1">
-        COPYRIGHT: KRZYSZTOF OSMAN
-      </h6>
+  <!--<footer class="page-footer font-small p-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+           <div class="d-flex justify-content-center p-2">
+              
+                  <a href="#">
+                  <i class="fab fa-facebook p-2 fa-3x text-primary"></i>
+                  </a>
+              
+              
+                  <a href="#">
+                  <i class="fab fa-twitter p-2 fa-3x text-primary"></i>
+                  </a>
+              
+              
+                  <a href="#">
+                  <i class="fab fa-instagram p-2 fa-3x text-primary"></i>
+                  </a>
+             
+              
+                  <a href="#">
+                  <i class="fab fa-linkedin p-2 fa-3x text-primary"></i>
+                  </a>
+             
+           </div>
+        </div>
+      </div>
+      <div class="footer-copyright text-center font-weight-bold p-2">
+             Copyright: ZUT PROJECT
+      </div>
+
     </div>
   </footer>
 

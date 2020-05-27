@@ -37,12 +37,17 @@
 
         $to_date = date('Y-m-d H:i',strtotime($from_date.'+ '.$days.' days + '.$hours.'hours'));
 
-        $sql = "SELECT price FROM cars WHERE id= $car_id";
+        $sql = "SELECT price, name, available FROM cars WHERE id= $car_id";
 
         $result = $mysqli->query($sql);
         $row = $result->fetch_row();
-
+        
         $price = $row[0];
+        $available =$row[2];
+
+        if($available !=1){
+            die('Samochód zajęty!');
+        }
 
         $cost = ($days * 24 + $hours) *$price;
 
