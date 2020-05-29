@@ -42,6 +42,23 @@ header button{
     font-weight: bold;
 }
 
+#rent{
+    
+    background-image: url("../assets/reservation.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+}
+
+#rent h1{
+    color: white;
+}
+
+#rent label{
+    font-weight: bold;
+}
+
+
 nav li{
     cursor: pointer;
 }

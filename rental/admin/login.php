@@ -27,7 +27,9 @@
                 if($user_password == $password){
                     session_start();
                     $_SESSION['isLogged'] = true;
-                    header("Location: dashboard.php");
+                    $_SESSION['nick_show'] = $nick;
+                    
+                    header("Location: ../index_logged.php");
                 }
                 else {
                     die("Niepoprawne hasło!");
