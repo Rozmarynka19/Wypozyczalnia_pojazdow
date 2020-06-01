@@ -1,0 +1,11 @@
+Konto administracyjne:
+L: Admin
+H: admin123
+
+
+Konta u¿ytkowników:
+L: Kowalski_Jan
+H: zaq1@WSX
+
+L: Nowak_Jan
+H: zaq1@WSX
