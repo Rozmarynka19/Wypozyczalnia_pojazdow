@@ -51,11 +51,11 @@
         
         if($login_dash=="Admin")
         {
-            $sql= "SELECT cars.name, clients.surname, reservations.price, reservations.to_date FROM reservations INNER JOIN cars ON reservations.car_id=cars.id INNER JOIN clients ON clients.id=reservations.client_id";
+            $sql= "SELECT distinct reservations.login as nick_login, cars.name,clients.names, clients.surname, reservations.price, reservations.to_date FROM users, reservations INNER JOIN cars ON reservations.car_id=cars.id INNER JOIN clients ON clients.id=reservations.client_id";
              
         }
         else{
-        $sql= "SELECT cars.name, clients.surname, reservations.price, reservations.to_date FROM reservations INNER JOIN cars ON reservations.car_id=cars.id INNER JOIN clients ON clients.id=reservations.client_id AND reservations.login='".$login_dash."'";
+        $sql= "SELECT distinct reservations.login as nick_login, cars.name,clients.names, clients.surname, reservations.price, reservations.to_date FROM users, reservations INNER JOIN cars ON reservations.car_id=cars.id INNER JOIN clients ON clients.id=reservations.client_id AND reservations.login='".$login_dash."'";
         }
         $result = $mysqli->query($sql);
         $rows = $result->fetch_all(MYSQLI_ASSOC);
@@ -69,10 +69,12 @@
         $login_dash = $_SESSION['nick_show'];
         if($login_dash=="Admin")
         {
-            $sql= "SELECT cars.name, clients.surname, reservations.price, reservations.to_date FROM reservations INNER JOIN cars ON reservations.car_id=cars.id INNER JOIN clients ON clients.id=reservations.client_id";
-             
+            $sql= "SELECT distinct reservations_history.login as nick_login, cars.name,clients.names, clients.surname, reservations_history.price, reservations_history.to_date FROM users, reservations_history INNER JOIN cars ON reservations_history.car_id=cars.id INNER JOIN clients ON clients.id=reservations_history.client_id";
+        
+        }else{
+            $sql= "SELECT distinct reservations_history.login as nick_login, cars.name, clients.names, clients.surname, reservations_history.price, reservations_history.to_date FROM users, reservations_history INNER JOIN cars ON reservations_history.car_id=cars.id INNER JOIN clients ON clients.id=reservations_history.client_id AND reservations_history.login='".$login_dash."'";
+          
         }
-        $sql= "SELECT cars.name, clients.surname, reservations_history.price, reservations_history.to_date FROM reservations_history INNER JOIN cars ON reservations_history.car_id=cars.id INNER JOIN clients ON clients.id=reservations_history.client_id AND reservations_history.login='".$login_dash."'";
         
         $result = $mysqli->query($sql);
         $rows = $result->fetch_all(MYSQLI_ASSOC);
@@ -103,7 +105,7 @@
 
         $cost = ($days * 24 + $hours) *$price;
 
-        $sql_2="INSERT INTO clients (`name`,`surname`,`phone_number`) VALUES (?,?,?)";
+        $sql_2="INSERT INTO clients (`names`,`surname`,`phone_number`) VALUES (?,?,?)";
 
         if($statement = $mysqli->prepare($sql_2)){
             if($statement->bind_param('sss',$name,$surname,$phone_number))

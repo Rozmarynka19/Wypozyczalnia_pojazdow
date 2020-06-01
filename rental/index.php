@@ -28,13 +28,13 @@ require('admin/functions.php');
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="nav navbar-nav">
             <li class="nav-item pr-3">
-              <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+              <a class="nav-link text-secondary font-weight-bold text-light h4" href="#">HOME <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item pr-3">
-              <a class="nav-link" onclick="smoothScroll('#available')">DOSTĘPNE AUTA</a>
+              <a class="nav-link text-secondary font-weight-bold text-light h4" onclick="smoothScroll('#available')">DOSTĘPNE AUTA</a>
             </li>
             <li class="nav-item pr-3">
-              <a class="nav-link" onclick="smoothScroll('#unavailable')">OBECNIE ZAREZERWOWANE</a>
+              <a class="nav-link text-secondary font-weight-bold text-light h4" onclick="smoothScroll('#unavailable')">OBECNIE ZAREZERWOWANE</a>
             </li>
           
           </ul>
@@ -44,7 +44,7 @@ require('admin/functions.php');
           <li>
             <div class="col-12">
               <form action="admin/login.html">
-                <input type="submit" value="ZALOGUJ" class="btn btn-danger btn-lg col-12">
+                <input type="submit" value="ZALOGUJ" class="btn btn-danger btn-lg col-12 ">
               </form>
             </div>
           </li>
@@ -54,14 +54,14 @@ require('admin/functions.php');
     </nav>
 
 
-    <div class="container h-75 d-flex align-items-center">
+    <div class="container h-75 d-flex align-items-center justify-content-center">
       <div class="row">
         <div class="col-12">
-          <h1 class="text-white font-weight-bold text-center">WYPOŻYCZALNIA SAMOCHODÓW</h1>
+          <h1 class="text-white font-weight-bold text-center ">WYPOŻYCZALNIA SAMOCHODÓW</h1>
         </div>
         <div class="col-12">
           <div class="row  d-flex justify-content-center">
-            <button class="col-lg-3 col-md-6 col-sm-12 m-4 font-weight-bold   btn-lg" onclick="smoothScroll('#available')">OFERTA</button>
+            <button class="col-lg-3 col-md-6 col-sm-12 m-4 font-weight-bold  rounded btn-light" onclick="smoothScroll('#available')">OFERTA</button>
            
           </div>
         </div>
@@ -271,7 +271,7 @@ require('admin/functions.php');
       </div>
 
     </div>
-  </footer>
+  </footer> -->
 
 
 

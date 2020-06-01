@@ -11,6 +11,7 @@ header{
 nav{
     background: transparent;
     border-bottom: 2px solid white;
+    
 }
 
 header button{
@@ -28,10 +29,11 @@ header button{
 
 #reservation{
     
-    background-image: url("../assets/reservation.jpg");
+    background-image: url("../assets/booking.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center; 
+    
 }
 
 #reservation h1{
@@ -44,7 +46,7 @@ header button{
 
 #rent{
     
-    background-image: url("../assets/reservation.jpg");
+    background-image: url("../assets/rent2.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center; 

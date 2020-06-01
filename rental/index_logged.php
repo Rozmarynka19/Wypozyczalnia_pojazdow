@@ -28,21 +28,15 @@ require('admin/functions.php');
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="nav navbar-nav">
             <li class="nav-item pr-3">
-              <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+              <a class="nav-link text-secondary font-weight-bold text-light h4" href="#">HOME <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item pr-3">
-              <a class="nav-link" onclick="smoothScroll('#available')">DOSTĘPNE AUTA</a>
+              <a class="nav-link text-secondary font-weight-bold text-light h4" onclick="smoothScroll('#available')">DOSTĘPNE AUTA</a>
             </li>
             <li class="nav-item pr-3">
-              <a class="nav-link" onclick="smoothScroll('#unavailable')">OBECNIE ZAREZERWOWANE</a>
+              <a class="nav-link text-secondary font-weight-bold text-light h4" onclick="smoothScroll('#unavailable')">OBECNIE ZAREZERWOWANE</a>
             </li>
-            <li class="nav-item pr-3">
-              <a class="nav-link" onclick="smoothScroll('#reservation')">ZAREZERWUJ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="smoothScroll('#rent')">WYPOŻYCZ</a>
-            </li>
-
+            
           </ul>
 
         </div>
@@ -80,9 +74,9 @@ require('admin/functions.php');
         </div>
         <div class="col-12">
           <div class="row mt-5 d-flex justify-content-center">
-            <button class="col-lg-3 col-md-6 col-sm-12 m-4 font-weight-bold" onclick="smoothScroll('#available')">OFERTA</button>
-            <button class="col-lg-3 col-md-6 col-sm-12 m-4 font-weight-bold" onclick="smoothScroll('#reservation')">REZERWUJ</button>
-            <button class="col-lg-3 col-md-6 col-sm-12 m-4 font-weight-bold" onclick="smoothScroll('#rent')">WYPOŻYCZ</button>
+            <button class="col-lg-3 col-md-6 col-sm-12 m-4 font-weight-bold  rounded btn-light" onclick="smoothScroll('#available')">OFERTA</button>
+            <button class="col-lg-3 col-md-6 col-sm-12 m-4 font-weight-bold  rounded btn-light" onclick="smoothScroll('#reservation')">REZERWUJ</button>
+            <button class="col-lg-3 col-md-6 col-sm-12 m-4 font-weight-bold  rounded btn-light" onclick="smoothScroll('#rent')">WYPOŻYCZ</button>
 
             </button>
           </div>
@@ -124,7 +118,7 @@ require('admin/functions.php');
         $rows = sort_cars('available', $number);
         foreach ($rows as $r) {
           echo '<div class="col-lg-3 col-md-6 col-sm-12 mt-3">';
-          echo '<div class="card">';
+          echo '<div class="card ">';
           echo '<img src="assets/' . $r['photo_url'] . '"class="card-img-top" alt="car">';
           echo '<div class="card-body">';
           echo '<h5 class="card-title text-center">' . $r['name'] . '</h5>';
@@ -160,7 +154,7 @@ require('admin/functions.php');
           echo '<div class="col-lg-3 col-md-6 col-sm-12 mt-3">';
           echo '<div class="card">';
           echo '<img src="assets/' . $r['photo_url'] . '"class="card-img-top img-fluid img-thumbnail" alt="car">';
-          echo '<div class="card-body">';
+          echo '<div class="card-body ">';
           echo '<h5 class="card-title text-center">' . $r['name'] . '</h5>';
           echo '<p class="text-center">' . $r['type'] . '</p>';
           echo '<p class="text-center font-weight-bold">' . $r['price'] . ' zł / h</p>';
@@ -203,7 +197,7 @@ require('admin/functions.php');
             </div>
             <div class="form-group">
               <label for="phone">Telefon</label>
-              <input type="tel" class="form-control" name="phone" placeholder="Podaj numer telefonu" Required>
+              <input type="tel" class="form-control" pattern="[0-9]+" minlength="9" maxlength="9"  name="phone" placeholder="Podaj numer telefonu" Required>
             </div>
             <div class="form-group">
               <label for="car" Samochód>Pojazd</label>
@@ -267,7 +261,7 @@ require('admin/functions.php');
           <h2><span id="amount_2">0</span> zł</h2>
         </div>
         <div class="col-12 d-flex justify-content-center p-5 text-white">
-          <form action="admin/reserve.php" method="POST">
+          <form action="admin/payments.html" method="POST">
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
@@ -284,7 +278,7 @@ require('admin/functions.php');
             </div>
             <div class="form-group">  <!-- dopracuj -->
               <label for="phone">Telefon</label>
-              <input type="tel" class="form-control" name="phone" placeholder="Podaj numer telefonu" Required>
+              <input type="tel" class="form-control" pattern="[0-9]+" minlength="9" maxlength="9"  name="phone" placeholder="Podaj numer telefonu" Required>
             </div>
             <div class="form-group">
               <label for="car_2" Samochód>Pojazd</label>

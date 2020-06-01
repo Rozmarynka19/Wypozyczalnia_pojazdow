@@ -20,14 +20,17 @@ if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] !== true){
     <title>Dashboard</title>
   </head>
   <body>
+    <div class="container mt-5">
+  <?php
+        echo '<h2 class="text-center font-weight-bold ">PANEL UŻYTKOWNIKA: '.$_SESSION['nick_show'].'</h2>';
+        ?>
+        </div>
     <div class="col-12">
     <div class="text-center pt-2">
             <a href="../index_logged.php" class="m-2">POWRÓT</a> | <a href="logout.php" class="m-2">WYLOGUJ</a>
         </div>
         <h1 class="text-center font-weight-bold p-5">AKTUALNE REZERWACJE</h1>
-        <?php
-        echo '<h3 class="text-center font-weight-bold">'.$_SESSION['nick_show'].'</h3>';
-        ?>
+        
     </div>
 
     <div class="container mt-5">
@@ -37,6 +40,7 @@ if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] !== true){
                   <tr>
                     <th scope="col"></th>
                     <th scope="col">Samochód</th>
+                    <th scope="col">Konto użytkownika</th>
                     <th scope="col">Wypożyczył</th>
                     <th scope="col">Koszt</th>
                     <th scope="col">Zwrot</th>
@@ -51,7 +55,8 @@ if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] !== true){
                       echo '<tr>';
                       echo '<th scope="row">'.($i+1).'</th>';
                       echo '<td>'.$rows[$i]['name'].'</td>';
-                      echo '<td>'.$rows[$i]['surname'].'</td>';
+                      echo '<td>'.$rows[$i]['nick_login'].'</td>';
+                      echo '<td>'.$rows[$i]['names'].' '.$rows[$i]['surname'].'</td>';
                       echo '<td>'.$rows[$i]['price'].'</td>';
                       echo '<td>'.$rows[$i]['to_date'].'</td>';
                       echo '</tr>';
@@ -80,6 +85,7 @@ if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] !== true){
                   <tr>
                     <th scope="col"></th>
                     <th scope="col">Samochód</th>
+                    <th scope="col">Konto użytkownika</th>
                     <th scope="col">Wypożyczył</th>
                     <th scope="col">Koszt</th>
                     <th scope="col">Zwrot</th>
@@ -94,7 +100,8 @@ if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] !== true){
                       echo '<tr>';
                       echo '<th scope="row">'.($i+1).'</th>';
                       echo '<td>'.$rows[$i]['name'].'</td>';
-                      echo '<td>'.$rows[$i]['surname'].'</td>';
+                      echo '<td>'.$rows[$i]['nick_login'].'</td>';
+                      echo '<td>'.$rows[$i]['names'].' '.$rows[$i]['surname'].'</td>';
                       echo '<td>'.$rows[$i]['price'].'</td>';
                       echo '<td>'.$rows[$i]['to_date'].'</td>';
                       echo '</tr>';
